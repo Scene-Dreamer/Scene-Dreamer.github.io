@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>SceneDreamer</title>
+
+    <meta name="description" content="Project page for SceneDreamer: Unbounded 3D Scene Generation from 2D Image Collections">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--FACEBOOK-->
+    <meta property="og:image" content="https://scene-dreamer.github.io/img/teaser.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="682">
+    <meta property="og:image:height" content="682">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://scene-dreamer.github.io"/>
+    <meta property="og:title" content="SceneDreamer" />
+    <meta property="og:description" content="Project page for SceneDreamer: Unbounded 3D Scene Generation from 2D Image Collections" />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SceneDreamer" />
+    <meta name="twitter:description" content="Project page for SceneDreamer: Unbounded 3D Scene Generation from 2D Image Collections" />
+    <meta name="twitter:image" content="https://scene-dreamer.github.io/img/teaser.jpg" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="./stylesheet.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+    <script type="text/javascript">
+        function toggle_visibility(id) {
+           var e = document.getElementById(id);
+           if(e.style.display == 'block')
+              e.style.display = 'none';
+           else
+              e.style.display = 'block';
+        }
+        </script>
+</head>
+
+<body>
+    <div class="container" id="main" style="width: 100%; max-width: 1500px;">
+        <div class="row">
+            <h1 class="col-md-12 text-center">
+                <b>SceneDreamer</b>: Unbounded 3D Scene Generation from 2D Image Collections <br>
+                <small>
+                    arXiv 2023
+                </small>
+            </h1>
+        </div>
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="">
+                            <image src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/5cab99df4998decfbf9e218e_paper-01-p-500.png" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://youtu.be/AjtOlDHsiyU">
+                            <image src="img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Scene-Dreamer/SceneDreamer">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+        <div class="row text-center" style="font-size:large;"><strong>TL;DR:</strong> SceneDreamer learns to generate unbounded 3D scenes from in-the-wild 2D image collections. <br> Our method can synthesize diverse landscapes across different styles, with 3D consistency, well-defined depth, and free camera trajectory.
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <video id="v0" width="100%" autoplay loop muted controls>
+                    <source src="img/teaser.mp4" type="video/mp4"/>
+                </video>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    In this work, we present <strong>SceneDreamer</strong>, an unconditional generative model for unbounded 3D scenes, which synthesizes large-scale 3D landscapes from random noises. Our framework is learned from in-the-wild 2D image collections only, without any 3D annotations. 
+                    At the core of SceneDreamer is a principled learning paradigm comprising <strong>1)</strong> an efficient yet expressive 3D scene representation, <strong>2)</strong> a generative scene parameterization, and <strong>3)</strong> an effective renderer that can leverage the knowledge from 2D images.
+                    Our framework starts from an efficient bird's-eye-view (BEV) representation generated from simplex noise, which consists of a height field and a semantic field. The height field represents the surface elevation of 3D scenes, while the semantic field provides detailed scene semantics. This BEV scene representation enables 1) representing a 3D scene with quadratic complexity, 2) disentangled geometry and semantics, and 3) efficient training. Furthermore, we propose a novel generative neural hash grid to parameterize the latent space given 3D positions and the scene semantics, which aims to encode generalizable features across scenes and align content. Lastly, a neural volumetric renderer, learned from 2D image collections through adversarial training, is employed to produce photorealistic images. Extensive experiments demonstrate the effectiveness of SceneDreamer and superiority over state-of-the-art methods in generating vivid yet diverse unbounded 3D worlds.
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Gallery
+                </h3>
+                <p>
+                    <u>
+                        Recommend to enter full screen for better visual quality
+                    </u>
+                </p>
+                <table>
+                    <tbody>
+                    <tr style="display:table-row; text-align: center;">
+                        <td>
+                            <video id="v2" width="100%" autoplay loop muted controls>
+                                <source src="img/gen_results.mp4" type="video/mp4"/>
+                            </video>
+                        </td>
+                    </tr>
+                    <tr style="display:table-row; text-align: center;">
+                        <td>
+                            <video id="v3" width="100%" autoplay loop muted controls>
+                                <source src="img/free_cam.mp4" type="video/mp4"/>
+                            </video>
+                        </td>
+                        <br>
+                    </tr>
+                    <tr style="display:table-row; text-align: center;">
+                        <td>
+                            <video id="v4" width="100%" autoplay loop muted controls>
+                                <source src="img/interp.mp4" type="video/mp4"/>
+                            </video>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Framework
+                </h3>
+                <br>
+                <video id="v1" width="100%" autoplay loop muted controls>
+                    <source src="img/method.mp4" type="video/mp4"/>
+                </video>
+                <p class="text-justify">
+                    Given a simplex noise and a style code as input, our model is capable of synthesizing large-scale 3D scenes where the camera can move freely and get realistic renderings. We first derive our BEV scene representation which consists of a height field and a semantic field. Then, we use a generative neural hash grid to parameterize the hyperspace of space-varied and scene-varied latent features given scene semantics and 3D position. Finally, a style-modulated renderer is employed to blend latent features and render 2D images via volume rendering. The entire framework is trained on in-the-wild 2D images end-to-end.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Video
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/AjtOlDHsiyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
